@@ -300,7 +300,9 @@ const CGSize GMCZoomingMultiImageViewPlaceholderSizeDefault = { 55, 55 };
             
             if (error) {
                 if ([self.currentRendition isEqual:rendition]) {
-                    [self.loadingIndicatorView stopAnimating];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.loadingIndicatorView stopAnimating];
+                    });
                 }
             } else {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
