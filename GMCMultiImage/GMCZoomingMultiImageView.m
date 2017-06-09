@@ -299,11 +299,11 @@ const CGSize GMCZoomingMultiImageViewPlaceholderSizeDefault = { 55, 55 };
             }
             
             if (error) {
-                if ([self.currentRendition isEqual:rendition]) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if ([self.currentRendition isEqual:rendition]) {
                         [self.loadingIndicatorView stopAnimating];
-                    });
-                }
+                    }
+                });
             } else {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
                     if ([self.currentRendition isEqual:rendition]) {
